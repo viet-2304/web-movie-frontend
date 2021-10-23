@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-
+import Movie from './component/Movie';
+import { Container, Row,Col } from 'react-bootstrap';
+import Footer from './component/Footer';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import AddMovie from './component/AddMovie';
+import ListMovie from './component/ListMovie';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Movie/>
+      <Container>
+        <Row>
+          <Col>
+            <Switch>
+              <Route path="/add" exact component={AddMovie}/>
+              <Route path="/edit/:id" exact component={AddMovie}/>
+              <Route path="/list" exact component={ListMovie}/>
+            </Switch>
+          </Col>
+        <Footer/>
+       </Row>
+     </Container>
+    </Router>
   );
 }
 
